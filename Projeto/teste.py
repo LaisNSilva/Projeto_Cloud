@@ -26,8 +26,10 @@ while sair=="N":
     #res = requests.get("http://"+DNS+"/admin/")
     if acao=='1':
         res = requests.get("http://"+DNS+"/users" , auth=('cloud', 'cloud'))
+        print(res.json())
     elif acao=='2':
         res = requests.get("http://"+DNS+"/groups" , auth=('cloud', 'cloud'))
+        print(res.json())
     elif acao=='3':
         username = input("Digite o username: ")
         email = input("Digite o e-mail: ")
@@ -36,13 +38,16 @@ while sair=="N":
         nome_grupo = input("Digite o nome do grupo: ")
         res = requests.post("http://"+DNS+"/groups/" , data={"name": nome_grupo}, auth=('cloud', 'cloud'))
     elif acao =='5':
-        username = input("Digite o username: ")
-        email = input("Digite o e-mail: ")
-        res = requests.delete("http://"+DNS+"/users/", data={"username": username, "email": email}, auth=('cloud', 'cloud'))
+        id_user = input("Digite o id: ")
+        res = requests.delete("http://"+DNS+"/users/"+id_user+"/", auth=('cloud', 'cloud'))
+    else:
+        id_group = input("Digite o id: ")
+        res = requests.delete("http://"+DNS+"/users/"+id_group+"/", auth=('cloud', 'cloud'))
+
 
 
     print(res)
-    print(res.json())
+    
 
     sair=input("Parar requisições? S/N: ")
 
