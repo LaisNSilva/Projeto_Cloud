@@ -34,6 +34,14 @@ def get_public_ip(instance_id):
         for instance in reservation['Instances']:
             return(instance.get("PublicIpAddress"))
 
+def get_public_ip_NV(instance_id):
+    ec2_client = boto3.client("ec2", region_name="us-east-1")
+    reservations = ec2_client.describe_instances(InstanceIds=[instance_id]).get("Reservations")
+
+    for reservation in reservations:
+        for instance in reservation['Instances']:
+            return(instance.get("PublicIpAddress"))
+
 
 
 
@@ -113,6 +121,9 @@ instance_North_Virginia = ec2_North_Virginia.create_instances(
 id_instance_North_Virginia = instance_North_Virginia[0].id
 print("instancia 2: {0}".format(id_instance_North_Virginia))
 
+ip=get_public_ip_NV(id_instance_North_Virginia)
+print(ip)
+
 instance_North_Virginia = ec2_North_Virginia.Instance(id=id_instance_North_Virginia)
 instance_North_Virginia.wait_until_running()
 
@@ -120,4 +131,6 @@ print('Sleep starting... ({0})'.format(150))
 time.sleep(150)
 print('Sleep ended')
 instance_North_Virginia.reload()
+
+
 

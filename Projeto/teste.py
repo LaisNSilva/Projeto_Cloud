@@ -14,39 +14,57 @@ LB_existe = client_LB.describe_load_balancers(
     ]
 )
 
-DNS=LB_existe["LoadBalancers"][0]["DNSName"]
+#DNS=LB_existe["LoadBalancers"][0]["DNSName"]
+DNS="54.224.216.219:8080"
 
 sair="N"
 
+token=requests.post("http://"+DNS+"/api-token-auth/" ,  data={"username": "cloud", "password": "cloud"})
+print(token)
+print(token.json())
+
+cloud_token = token.json()['token']
+print(cloud_token)
+
+
+a='Token '+cloud_token
+
+
 while sair=="N":
 
-    acao = input("Digite 1 para listar usuários, 2 para listar grupos, 3 para criar usuário, 4 para criar grupo: ")
+    acao = input("Digite 1 para listar usuários, 2 para listar grupos, 3 para criar usuário, 4 para criar grupo, 5 paradeletar usuario, 6 para deletar grupo: ")
     print(acao)
 
-    #res = requests.get("http://"+DNS+"/admin/")
+    
     if acao=='1':
-        res = requests.get("http://"+DNS+"/users" , auth=('cloud', 'cloud'))
+        res = requests.get("http://"+DNS+"/users" , headers={'Authorization': a})
+        print(res)
         print(res.json())
     elif acao=='2':
-        res = requests.get("http://"+DNS+"/groups" , auth=('cloud', 'cloud'))
+        res = requests.get("http://"+DNS+"/groups" , headers={'Authorization': a})
+        print(res)
         print(res.json())
     elif acao=='3':
         username = input("Digite o username: ")
         email = input("Digite o e-mail: ")
-        res = requests.post("http://"+DNS+"/users/", data={"username": username, "email": email}, auth=('cloud', 'cloud'))
+        res = requests.post("http://"+DNS+"/users/", data={"username": username, "email": email}, headers={'Authorization': a})
+        print(res)
     elif acao=='4':
         nome_grupo = input("Digite o nome do grupo: ")
-        res = requests.post("http://"+DNS+"/groups/" , data={"name": nome_grupo}, auth=('cloud', 'cloud'))
+        res = requests.post("http://"+DNS+"/groups/" , data={"name": nome_grupo}, headers={'Authorization': a})
+        print(res)
     elif acao =='5':
         id_user = input("Digite o id: ")
-        res = requests.delete("http://"+DNS+"/users/"+id_user+"/", auth=('cloud', 'cloud'))
+        res = requests.delete("http://"+DNS+"/users/"+id_user+"/", headers={'Authorization': a})
+        print(res)
     else:
         id_group = input("Digite o id: ")
-        res = requests.delete("http://"+DNS+"/users/"+id_group+"/", auth=('cloud', 'cloud'))
+        res = requests.delete("http://"+DNS+"/users/"+id_group+"/", headers={'Authorization': a})
+        print(res)
 
 
 
-    print(res)
+    
     
 
     sair=input("Parar requisições? S/N: ")
