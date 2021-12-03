@@ -47,3 +47,12 @@
 12/03/2021 12:46:00 PM O listener foi criado
 12/03/2021 12:46:00 PM Criando a Policy do Auto Scaling Group
 12/03/2021 12:46:01 PM A Policy do Auto Scaling Group foi criada
+12/03/2021 12:57:43 PM Found credentials in shared credentials file: ~/.aws/credentials
+12/03/2021 12:58:17 PM Found credentials in shared credentials file: ~/.aws/credentials
+12/03/2021 12:58:50 PM Found credentials in shared credentials file: ~/.aws/credentials
+12/03/2021 12:59:17 PM Found credentials in shared credentials file: ~/.aws/credentials
+12/03/2021 12:59:24 PM <Response [200]>[{'url': 'http://lbprojeto-329812746.us-east-1.elb.amazonaws.com/users/1/', 'username': 'cloud', 'email': 'cloud@a.com', 'groups': []}]
+12/03/2021 01:00:01 PM Found credentials in shared credentials file: ~/.aws/credentials
+12/03/2021 01:00:35 PM <Response [200]>[{'url': 'http://lbprojeto-329812746.us-east-1.elb.amazonaws.com/users/2/', 'username': 'eva', 'email': 'eva@gamil.com', 'groups': []}, {'url': 'http://lbprojeto-329812746.us-east-1.elb.amazonaws.com/users/1/', 'username': 'cloud', 'email': 'cloud@a.com', 'groups': []}]
+12/03/2021 01:01:16 PM Found credentials in shared credentials file: ~/.aws/credentials
+12/03/2021 01:02:07 PM Found credentials in shared credentials file: ~/.aws/credentials

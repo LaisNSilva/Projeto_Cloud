@@ -26,33 +26,6 @@ logging.info("Criou ec2 resource na região us-east-2 (Ohio)")
 client_Ohio = boto3.client('ec2', region_name="us-east-2")
 logging.info("Criou ec2 client na região us-east-2 (Ohio)")
 
-# # ---------------------------------------------------------------------------
-# # Apagar Instância Postgres
-# logging.info("Verifica se há instâncias de base de dados região us-east-2 (Ohio)")
-# existe_Postgres = client_Ohio.describe_instances(
-#     Filters=[
-#         {
-#             'Name': 'key-name',
-#             'Values': [
-#                 'KP_Ohio',
-#             ],
-#         },
-#     ],
-# )
-
-# logging.info("Encerrando as instâncias de base de dados região us-east-2 (Ohio)")
-# for reservation in (existe_Postgres["Reservations"]):
-#         for instance in reservation["Instances"]:
-#             try:
-#                 terminate_instance(instance["InstanceId"], "us-east-2")
-#                 logging.info("Uma instância Postgres será encerrada")
-#             except:
-#                 logging.info("Instância Postgres não existia")
-#                 pass
-
-# logging.info("Esperando a desligamento")
-# time.sleep(60)
-# logging.info("Instância encerrada")
 
 
 # ---------------------------------------------------------------------------
@@ -75,17 +48,6 @@ file.write(KP_Ohio['KeyMaterial'])
 file.close
 logging.info("Key Pair KP_Ohio foi criada")
 
-# ---------------------------------------------------------------------------
-# Apagando o Securuty Group
-# logging.info("Deletando Securuty Group do Postgres região us-east-2 (Ohio)")
-# try:
-#     client_Ohio.delete_security_group(
-#         GroupName='SG_Ohio',
-#     )
-#     logging.info("Securuty Group SG_Ohio foi deletada")
-# except:
-#     logging.info("Securuty Group SG_Ohio não existia")
-#     pass
 
 # ---------------------------------------------------------------------------
 # Criando Security Group
@@ -195,9 +157,7 @@ instance_ohio = ec2_ohio.create_instances(
 )
 
 id_instance_ohio = instance_ohio[0].id
-print(id_instance_ohio)
 ip_pub_postgres=get_public_ip(id_instance_ohio, "us-east-2")
-print(ip_pub_postgres)
 
 logging.info("A instância de Banco de Dados foi criada - Id = "+id_instance_ohio)
 
@@ -223,7 +183,7 @@ try:
         ForceDelete=True
         )
         logging.info("Deletou o ASGroup_Projeto que existia em North Virginia")
-        print("Deletou o Auto Scaling que existia")
+      
 except:
     logging.info("Não havia ASGroup_Projeto Auto Scaling Group")
     pass   
@@ -243,7 +203,7 @@ try:
         LaunchConfigurationName='LC_Projeto'
         )
         logging.info("Deletou o LC_Projeto que existia em North Virginia")
-        print("Deletou o Launch Configuration que existia")
+       
 except:
     logging.info("Não havia LC_Projeto Launch Configuration")
     pass 
@@ -269,28 +229,12 @@ try:
         load_balancer_waiter_delete = client_LB.get_waiter('load_balancers_deleted')  
         load_balancer_waiter.wait(LoadBalancerArns=[LB_existe["LoadBalancers"][0]["LoadBalancerArn"]])   
         logging.info("Deletou o LBProjeto que existia em North Virginia")
-        print("Deletou o Load Balancer que existia")
+       
 except:
     logging.info("Não havia LBProjeto Load Balancer")
-    print("não exclui o load balancer")
+    
     pass 
 
-#time.sleep(120)
-
-
-
-# ---------------------------------------------------------------------------
-# Apagando o Securuty Group
-# try:
-#     client_North_Virginia.delete_security_group(
-#         GroupName='SG_Load_Balancer'
-#     )
-#     print("apagando SC LB")
-#     logging.info("O Securuty Group SG_Load_Balancer foi deletado em North Virginia")
-# except:
-#     print("não apagou SC LB")
-#     logging.info("Não havia SG_Load_Balancer Securuty Group")
-#     pass     
 
 # ---------------------------------------------------------------------------
 
@@ -320,18 +264,6 @@ file = open("KP_North_Virginia.pem", 'w')
 file.write(KP_North_Virginia['KeyMaterial'])
 file.close
 logging.info("Key Pair KP_North_Virginia foi criada")
-
-# ---------------------------------------------------------------------------
-# Apagando o Securuty Group
-# logging.info("Deletando Securuty Group do Django região us-east-1 (North_Virginia)")
-# #try:
-# client_North_Virginia.delete_security_group(
-#     GroupName='SG_North_Virginia'
-# )
-# logging.info("Securuty Group SG_North_Virginia foi deletada")
-# #except:
-#     #logging.info("Securuty Group SG_North_Virginia não existia")
-#     #pass
 
 
 
@@ -437,19 +369,16 @@ instance_North_Virginia = ec2_North_Virginia.create_instances(
 )
 
 id_instance_North_Virginia = instance_North_Virginia[0].id
-print("instancia 2: {0}".format(id_instance_North_Virginia))
 ip=get_public_ip(id_instance_North_Virginia, "us-east-1")
-print(ip)
 
 logging.info("A instância de ORM foi criada - Id = "+id_instance_North_Virginia)
 
 instance_North_Virginia = ec2_North_Virginia.Instance(id=id_instance_North_Virginia)
 instance_North_Virginia.wait_until_running()
 
-print('Sleep starting... ({0})'.format(150))
 logging.info("Esperando a instância de North Virginia ser inicializada")
 time.sleep(150)
-print('Sleep ended')
+
 logging.info("A instância de North Virginia foi inicializada")
 
 
@@ -458,19 +387,17 @@ instance_North_Virginia.reload()
 # ---------------------------------------------------------------------------
 # Criar AMI
 
-print("Listando as imagens")
+
 logging.info("Listando as imagens de North Virginia")
 images = ec2_North_Virginia.images.filter(Owners=['self']) 
-print(images)
-print("Caso tenha a image AMI_Instace_2 irá deletá-la")
+
 for image in images:
     if image.name=="AMI_Instace_2":
         image_del = ec2_North_Virginia.Image(image.id)
         image_del.deregister()
-        print(f'AMI {image.id} successfully deregistered')
         logging.info(f'AMI {image.id} foi deletada')
 
-print("Vai criar a imagem!")
+
 logging.info("Criando a imagem da instância ORM em North Viginia")
 image = instance_North_Virginia.create_image(
     InstanceId=id_instance_North_Virginia,
@@ -480,7 +407,7 @@ image = instance_North_Virginia.create_image(
 )
 
 logging.info(f'AMI id: {image.id}')
-print(f'AMI creation started: {image.id}')
+
 
 logging.info("Esperando a imagem")
 image.wait_until_exists(
@@ -495,7 +422,7 @@ image.wait_until_exists(
 
 logging.info("A imagem de ORM em North Viginia está pronta")
 
-print(f'AMI {image.id} successfully created')
+
 
 # ---------------------------------------------------------------------------
 #Destruindo a segunda instancia
@@ -528,7 +455,7 @@ LaunchConfiguration = client_as.create_launch_configuration(
 )
 
 logging.info("O Launch Configuration LC_Projeto foi criado")
-print("Criou o Launch Configuration")
+
 
 # ---------------------------------------------------------------------------
 zones_lista = client_North_Virginia.describe_availability_zones()["AvailabilityZones"]
@@ -549,7 +476,6 @@ ASGroup=client_as.create_auto_scaling_group(
 )
 
 logging.info("O Auto Scaling Group ASGroup_Projeto foi criado")
-print("Criou o Auto Scaling Groups")
 
 
 
@@ -606,7 +532,7 @@ try:
             TargetGroupArn=TG_existe["TargetGroups"][0]["TargetGroupArn"]
         )
         logging.info("Deletou o TGProjeto que existia em North Virginia")
-        print("Deletou o Target Group que existia")
+       
 except:
     logging.info("Não havia TGProjeto Target Group")
     pass
@@ -623,7 +549,6 @@ TargetGroup = client_LB.create_target_group(
     IpAddressType='ipv4'
 )
 logging.info("O Target Group TGProjeto foi criado")
-print("Criou o Target Group")
 
 # ---------------------------------------------------------------------------
 subnets_lista=client_North_Virginia.describe_subnets()['Subnets']
@@ -649,7 +574,7 @@ load_balancer_waiter = client_LB.get_waiter('load_balancer_available')
 load_balancer_waiter.wait(LoadBalancerArns=[LoadBlanacer["LoadBalancers"][0]["LoadBalancerArn"]])
 
 logging.info("O Load Balancer LBProjeto foi criado")
-print("Criou o Load Balancer")
+
 
 # ---------------------------------------------------------------------------
 TG = client_LB.describe_target_groups(
@@ -674,7 +599,7 @@ logging.info("O Auto Scaling Group foi anexado ao Target Group do Load Balancer"
 # ---------------------------------------------------------------------------
 # Listener
 
-print("Vou criar o listener")
+
 logging.info("Criando o Listener")
 listener = client_LB.create_listener(
     LoadBalancerArn=LoadBlanacer["LoadBalancers"][0]["LoadBalancerArn"],
@@ -683,7 +608,7 @@ listener = client_LB.create_listener(
     DefaultActions=[{'Type': 'forward', 'TargetGroupArn': TG["TargetGroups"][0]["TargetGroupArn"]}]
 )
 logging.info("O listener foi criado")
-print("Criei o listener")
+
 
 # ---------------------------------------------------------------------------
 # Policy
