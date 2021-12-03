@@ -1,58 +1,54 @@
-12/03/2021 12:34:04 PM Found credentials in shared credentials file: ~/.aws/credentials
-12/03/2021 12:34:04 PM Criou ec2 resource na região us-east-2 (Ohio)
-12/03/2021 12:34:04 PM Criou ec2 client na região us-east-2 (Ohio)
-12/03/2021 12:34:04 PM Deletando Key Pair região us-east-2 (Ohio)
-12/03/2021 12:34:05 PM Key Pair KP_Ohio foi deletada
-12/03/2021 12:34:05 PM Key Pair KP_Ohio foi criada
-12/03/2021 12:34:06 PM O grupo SG_Ohio com autorizações para as portas 22 e 5432 já existe
-12/03/2021 12:34:06 PM Criando a instânca de banco de dados Postgres em Ohio
-12/03/2021 12:34:10 PM A instância de Banco de Dados foi criada - Id = i-01a4366570d95d03c
-12/03/2021 12:34:10 PM Criou autoscaling client na região us-east-1 (North Virginia)
-12/03/2021 12:34:10 PM Verificando se existe ASGroup_Projeto Auto Scaling Group em North Virginia
-12/03/2021 12:34:11 PM Verificando de existe LC_Projeto Launch Configuration
-12/03/2021 12:34:11 PM Criou elbv2 client na região us-east-1 (North Virginia)
-12/03/2021 12:34:11 PM Verificando se existe LBProjeto Load Balancer em Noth Virginia
-12/03/2021 12:34:12 PM Não havia LBProjeto Load Balancer
-12/03/2021 12:34:12 PM Criou ec2 resource na região us-east-1 (North Virginia)
-12/03/2021 12:34:12 PM Criou ec2 client na região us-east-1 (North Virginia)
-12/03/2021 12:34:12 PM Deletando Key Pair região us-east-1 (North Virginia)
-12/03/2021 12:34:13 PM Key Pair KP_North_Virginia foi deletada
-12/03/2021 12:34:13 PM Key Pair KP_North_Virginia foi criada
-12/03/2021 12:34:15 PM O grupo SG_North_Virginia com autorizações para as portas 22 e  já 8080 existe
-12/03/2021 12:34:15 PM Criando a instânca de ORM Django em North Virginia
-12/03/2021 12:34:19 PM A instância de ORM foi criada - Id = i-0daf59cb57162c012
-12/03/2021 12:34:50 PM Esperando a instância de North Virginia ser inicializada
-12/03/2021 12:37:20 PM A instância de North Virginia foi inicializada
-12/03/2021 12:37:20 PM Listando as imagens de North Virginia
-12/03/2021 12:37:21 PM AMI ami-076c1f44a426b1674 foi deletada
-12/03/2021 12:37:21 PM Criando a imagem da instância ORM em North Viginia
-12/03/2021 12:37:22 PM AMI id: ami-0a533c89894293205
-12/03/2021 12:37:22 PM Esperando a imagem
-12/03/2021 12:43:00 PM A imagem de ORM em North Viginia está pronta
-12/03/2021 12:43:01 PM A instândo de ORM Djando em North Virginia foi encerrada
-12/03/2021 12:43:01 PM Criando o Launch Configuration em North Virginia
-12/03/2021 12:43:02 PM O Launch Configuration LC_Projeto foi criado
-12/03/2021 12:43:03 PM Criando o Auto Scaling Group em North Virginia
-12/03/2021 12:43:04 PM O Auto Scaling Group ASGroup_Projeto foi criado
-12/03/2021 12:43:05 PM O SG_Load_Balancer já existe
-12/03/2021 12:43:05 PM Verificando se existe TGProjeto Target Group em Noth Virginia
-12/03/2021 12:43:08 PM Deletou o TGProjeto que existia em North Virginia
-12/03/2021 12:43:08 PM Criando o Target Group em North Virginia
-12/03/2021 12:43:09 PM O Target Group TGProjeto foi criado
-12/03/2021 12:43:09 PM Criando o Load Balancer em North Virginia
-12/03/2021 12:43:10 PM Esperando o Load Balancer ficar pronto
-12/03/2021 12:45:58 PM O Load Balancer LBProjeto foi criado
-12/03/2021 12:46:00 PM O Auto Scaling Group foi anexado ao Target Group do Load Balancer
-12/03/2021 12:46:00 PM Criando o Listener
-12/03/2021 12:46:00 PM O listener foi criado
-12/03/2021 12:46:00 PM Criando a Policy do Auto Scaling Group
-12/03/2021 12:46:01 PM A Policy do Auto Scaling Group foi criada
-12/03/2021 12:57:43 PM Found credentials in shared credentials file: ~/.aws/credentials
-12/03/2021 12:58:17 PM Found credentials in shared credentials file: ~/.aws/credentials
-12/03/2021 12:58:50 PM Found credentials in shared credentials file: ~/.aws/credentials
-12/03/2021 12:59:17 PM Found credentials in shared credentials file: ~/.aws/credentials
-12/03/2021 12:59:24 PM <Response [200]>[{'url': 'http://lbprojeto-329812746.us-east-1.elb.amazonaws.com/users/1/', 'username': 'cloud', 'email': 'cloud@a.com', 'groups': []}]
-12/03/2021 01:00:01 PM Found credentials in shared credentials file: ~/.aws/credentials
-12/03/2021 01:00:35 PM <Response [200]>[{'url': 'http://lbprojeto-329812746.us-east-1.elb.amazonaws.com/users/2/', 'username': 'eva', 'email': 'eva@gamil.com', 'groups': []}, {'url': 'http://lbprojeto-329812746.us-east-1.elb.amazonaws.com/users/1/', 'username': 'cloud', 'email': 'cloud@a.com', 'groups': []}]
-12/03/2021 01:01:16 PM Found credentials in shared credentials file: ~/.aws/credentials
-12/03/2021 01:02:07 PM Found credentials in shared credentials file: ~/.aws/credentials
+12/03/2021 06:02:27 PM Found credentials in shared credentials file: ~/.aws/credentials
+12/03/2021 06:02:27 PM Criou ec2 resource na região us-east-2 (Ohio)
+12/03/2021 06:02:27 PM Criou ec2 client na região us-east-2 (Ohio)
+12/03/2021 06:02:27 PM Deletando Key Pair região us-east-2 (Ohio)
+12/03/2021 06:02:28 PM Key Pair KP_Ohio foi deletada
+12/03/2021 06:02:28 PM Key Pair KP_Ohio foi criada
+12/03/2021 06:02:29 PM O grupo SG_Ohio com autorizações para as portas 22 e 5432 já existe
+12/03/2021 06:02:29 PM Criando a instânca de banco de dados Postgres em Ohio
+12/03/2021 06:02:32 PM A instância de Banco de Dados foi criada - Id = i-0eb5ace0482a23aaa
+12/03/2021 06:02:32 PM Criou autoscaling client na região us-east-1 (North Virginia)
+12/03/2021 06:02:32 PM Verificando se existe ASGroup_Projeto Auto Scaling Group em North Virginia
+12/03/2021 06:02:34 PM Deletou o ASGroup_Projeto que existia em North Virginia
+12/03/2021 06:02:34 PM Verificando de existe LC_Projeto Launch Configuration
+12/03/2021 06:02:34 PM Deletou o LC_Projeto que existia em North Virginia
+12/03/2021 06:02:34 PM Criou elbv2 client na região us-east-1 (North Virginia)
+12/03/2021 06:02:34 PM Verificando se existe LBProjeto Load Balancer em Noth Virginia
+12/03/2021 06:02:35 PM Não havia LBProjeto Load Balancer
+12/03/2021 06:02:35 PM Criou ec2 resource na região us-east-1 (North Virginia)
+12/03/2021 06:02:35 PM Criou ec2 client na região us-east-1 (North Virginia)
+12/03/2021 06:02:35 PM Deletando Key Pair região us-east-1 (North Virginia)
+12/03/2021 06:02:37 PM Key Pair KP_North_Virginia foi deletada
+12/03/2021 06:02:37 PM Key Pair KP_North_Virginia foi criada
+12/03/2021 06:02:39 PM O grupo SG_North_Virginia com autorizações para as portas 22 e  já 8080 existe
+12/03/2021 06:02:39 PM Criando a instânca de ORM Django em North Virginia
+12/03/2021 06:02:43 PM A instância de ORM foi criada - Id = i-0b8df51994ee5fe98
+12/03/2021 06:03:14 PM Esperando a instância de North Virginia ser inicializada
+12/03/2021 06:05:44 PM A instância de North Virginia foi inicializada
+12/03/2021 06:05:45 PM Listando as imagens de North Virginia
+12/03/2021 06:05:46 PM AMI ami-0a533c89894293205 foi deletada
+12/03/2021 06:05:46 PM Criando a imagem da instância ORM em North Viginia
+12/03/2021 06:05:47 PM AMI id: ami-02bb4ee02a6742282
+12/03/2021 06:05:47 PM Esperando a imagem
+12/03/2021 06:11:26 PM A imagem de ORM em North Viginia está pronta
+12/03/2021 06:11:28 PM A instândo de ORM Djando em North Virginia foi encerrada
+12/03/2021 06:11:29 PM Criando o Launch Configuration em North Virginia
+12/03/2021 06:11:29 PM O Launch Configuration LC_Projeto foi criado
+12/03/2021 06:11:30 PM Criando o Auto Scaling Group em North Virginia
+12/03/2021 06:11:30 PM O Auto Scaling Group ASGroup_Projeto foi criado
+12/03/2021 06:11:32 PM O SG_Load_Balancer já existe
+12/03/2021 06:11:32 PM Verificando se existe TGProjeto Target Group em Noth Virginia
+12/03/2021 06:11:35 PM Deletou o TGProjeto que existia em North Virginia
+12/03/2021 06:11:35 PM Criando o Target Group em North Virginia
+12/03/2021 06:11:35 PM O Target Group TGProjeto foi criado
+12/03/2021 06:11:35 PM Criando o Load Balancer em North Virginia
+12/03/2021 06:11:37 PM Esperando o Load Balancer ficar pronto
+12/03/2021 06:14:25 PM O Load Balancer LBProjeto foi criado
+12/03/2021 06:14:26 PM O Auto Scaling Group foi anexado ao Target Group do Load Balancer
+12/03/2021 06:14:26 PM Criando o Listener
+12/03/2021 06:14:26 PM O listener foi criado
+12/03/2021 06:14:26 PM Criando a Policy do Auto Scaling Group
+12/03/2021 06:14:27 PM A Policy do Auto Scaling Group foi criada
+12/03/2021 06:35:00 PM Found credentials in shared credentials file: ~/.aws/credentials
+12/03/2021 06:35:07 PM GET <Response [200]>[{'url': 'http://lbprojeto-2010131490.us-east-1.elb.amazonaws.com/users/1/', 'username': 'cloud', 'email': 'cloud@a.com', 'groups': []}]
+12/03/2021 08:20:11 PM Saiu das requisições

@@ -41,30 +41,30 @@ while sair=="N":
         res = requests.get("http://"+DNS+"/groups" , headers={'Authorization': a})
         print(res)
         print(res.json())
-        logging.info('GET 'str(res)+str(res.json()))
+        logging.info('GET '+str(res)+str(res.json()))
     elif acao=='3':
         username = input("Digite o username: ")
         email = input("Digite o e-mail: ")
         res = requests.post("http://"+DNS+"/users/", data={"username": username, "email": email}, headers={'Authorization': a})
         print(res)
         print(res.json())
-        logging.info('POST 'str(res)+str(res.json()))
+        logging.info('POST '+str(res)+str(res.json()))
     elif acao=='4':
         nome_grupo = input("Digite o nome do grupo: ")
         res = requests.post("http://"+DNS+"/groups/" , data={"name": nome_grupo}, headers={'Authorization': a})
         print(res)
         print(res.json())
-        logging.info('POST 'str(res)+str(res.json()))
+        logging.info('POST '+str(res)+str(res.json()))
     elif acao =='5':
         id_user = input("Digite o id: ")
         res = requests.delete("http://"+DNS+"/users/"+id_user+"/", headers={'Authorization': a})
         print(res)
-        logging.info('DELETE 'str(res))
+        logging.info('DELETE '+str(res))
     else:
         id_group = input("Digite o id: ")
         res = requests.delete("http://"+DNS+"/users/"+id_group+"/", headers={'Authorization': a})
         print(res)
-        logging.info('DELETE 'str(res))
+        logging.info('DELETE '+str(res))
         
 
 
