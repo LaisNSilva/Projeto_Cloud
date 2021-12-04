@@ -28,7 +28,7 @@ a='Token '+cloud_token
 
 while sair=="N":
 
-    acao = input("Digite 1 para listar usuários, 2 para listar grupos, 3 para criar usuário, 4 para criar grupo, 5 paradeletar usuario, 6 para deletar grupo: ")
+    acao = input("Digite 1 para listar usuários, 2 para listar grupos, 3 para criar usuário, 4 para criar grupo, 5 para deletar usuario, 6 para deletar grupo: ")
     print(acao)
 
     
